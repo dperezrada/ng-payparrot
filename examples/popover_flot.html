@@ -56,7 +56,9 @@
                     ]
         }
     };
-    $scope.data1 = [data["visits"], data["visitors"]];
+    $scope.data1 = {
+        chart: [data["visits"], data["visitors"]]
+    }
     $scope.cal = function(id){
         $http.get('http://movies.apidone.com/movies', { cache: true}).success(
             function(lala){
@@ -75,7 +77,7 @@
 <body ng-app="ng-payparrot-example">
 	<div ng-controller="ngCtrl">
 		<div style="margin-top: 200px"></div>
-		<popchart ng-model="data1" show-event="cal" show-event-attr="{{hola}}"></popchart>
+		<popchart ng-model="data1.chart" show-event="cal" show-event-attr="hola"></popchart>
 	</div>
 </body>
 </html>

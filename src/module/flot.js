@@ -5,14 +5,15 @@ angular.module('ngPayparrot')
     return {
       template: '<div class="popover_container"><button popover-placement="right" popover="loading..." class="btn" popover-title="Visitantes últimos 3 meses">chart</button></div>',
       restrict: 'E',
-      scope: {showEventAttr: "@",showEvent: "@"},
+      scope: {showEventAttr: "=",showEvent: "=", ngModel: "="},
       link: function(scope, element, attrs) {
         var chart = null,
           options = {
-            grid: { hoverable: true,
-               clickable: true,
-               tickColor: '#f9f9f9',
-               borderWidth: 0
+            grid: {
+              hoverable: true,
+              clickable: true,
+              tickColor: '#f9f9f9',
+              borderWidth: 0
             },
             legend: {
               labelBoxBorderColor: '#fff'
@@ -36,7 +37,7 @@ angular.module('ngPayparrot')
             }
           };
 
-        var data = scope.$parent[attrs.ngModel];
+        var data = scope.ngModel;
 
         var updateChart = function(){
           if(!data || data.length === 0)
@@ -63,7 +64,7 @@ angular.module('ngPayparrot')
           scope.show = !scope.show;
           if(scope.show){
             // Calling On click function
-            scope.$parent[scope.showEvent](scope.showEventAttr);
+            scope.showEvent(scope.showEventAttr);
 
             $('.popover', element).css({
               'max-width': 'none',
