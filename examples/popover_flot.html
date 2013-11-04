@@ -11,8 +11,6 @@
     <script type="text/javascript" src='../bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js'></script>
 
     <script src="../bower_components/flot/jquery.flot.js"></script>
-    <script src="../bower_components/flot/jquery.flot.stack.js"></script>
-	<script src="../bower_components/flot/jquery.flot.resize.js"></script>
 	<script src="../bower_components/flot/jquery.flot.time.js"></script>
 
 	<!-- NG-PAYPARROT -->
@@ -65,10 +63,11 @@
               console.log(lala.length);
             }
           );
-          console.log("chao1");
-        console.log("lala");
-        console.log(id);
+          console.log("Param:");
+          console.log(id);
+        console.log("Fin");
     }
+    $scope.hola = "1";
 
     }]);
     </script>
@@ -76,7 +75,7 @@
 <body ng-app="ng-payparrot-example">
 	<div ng-controller="ngCtrl">
 		<div style="margin-top: 200px"></div>
-		<popchart ng-model="data1" show-event="cal" show-event-attrs="1"></popchart>
+		<popchart ng-model="data1" show-event="cal" show-event-attr="{{hola}}"></popchart>
 	</div>
 </body>
 </html>

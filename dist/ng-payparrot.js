@@ -22,7 +22,7 @@ angular.module('ngPayparrot')
     return {
       template: '<div class="popover_container"><button popover-placement="right" popover="loading..." class="btn" popover-title="Visitantes últimos 3 meses">chart</button></div>',
       restrict: 'E',
-      scope: {},
+      scope: {showEventAttr: "@",showEvent: "@"},
       link: function(scope, element, attrs) {
         var chart = null,
           options = {
@@ -79,12 +79,8 @@ angular.module('ngPayparrot')
         $(element).click(function(){
           scope.show = !scope.show;
           if(scope.show){
-            console.log("callback");
-            console.log("");
             // Calling On click function
-            scope.$parent[attrs.showEvent].apply(
-              this, attrs.showEventAttrs.split(',')
-            );
+            scope.$parent[scope.showEvent](scope.showEventAttr);
 
             $('.popover', element).css({
               'max-width': 'none',
