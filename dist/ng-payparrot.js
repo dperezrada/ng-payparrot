@@ -20,9 +20,9 @@ angular.module('ngPayparrot').constant('Utils', Utils);
 angular.module('ngPayparrot')
   .directive('popchart', function ($http) {
     return {
-      template: '<div class="popover_container"><button popover-placement="right" popover="loading..." class="btn" popover-title="Visitantes últimos 3 meses">chart</button></div>',
+      template: '<div class="popover_container"><button popover-placement="right" popover="loading..." class="btn" popover-title="{{customTitle}}"><i alt="" class="icon-bar-chart"></i></button></div>',
       restrict: 'E',
-      scope: {showEventAttrs: "=",showEvent: "=", ngModel: "="},
+      scope: {showEventAttrs: "=",showEvent: "=", ngModel: "=", customTitle: "="},
       link: function(scope, element, attrs) {
         var chart = null,
           options = {
@@ -87,8 +87,7 @@ angular.module('ngPayparrot')
 
             $('.popover', element).css({
               'max-width': 'none',
-              'height': '250px',
-              'top': '88px'   //TODO: FIX this
+              'height': '250px'
             });
             $('.popover-content', element).css({
               'width': '450px',
