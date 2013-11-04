@@ -1,0 +1,82 @@
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title></title>
+	<!-- REQUIREMENTS -->
+	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap-css/css/bootstrap.min.css">
+
+	<script type="text/javascript" src='../bower_components/jquery/jquery.min.js'></script>
+	<script type="text/javascript" src='../bower_components/angular/angular.js'></script>
+    <script type="text/javascript" src='../bower_components/angular-ui-bootstrap-bower/ui-bootstrap.min.js'></script>
+    <script type="text/javascript" src='../bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js'></script>
+
+    <script src="../bower_components/flot/jquery.flot.js"></script>
+    <script src="../bower_components/flot/jquery.flot.stack.js"></script>
+	<script src="../bower_components/flot/jquery.flot.resize.js"></script>
+	<script src="../bower_components/flot/jquery.flot.time.js"></script>
+
+	<!-- NG-PAYPARROT -->
+    <script type="text/javascript" src='../dist/ng-payparrot.js'></script>
+
+    <script type="text/javascript">
+    /**
+    *  Module
+    *
+    * Description
+    */
+    angular.module('ng-payparrot-example', ['ngPayparrot']).controller('ngCtrl', ['$scope', '$http', function($scope,$http){
+    		data = {
+        "visits": {
+            "label": "visits",
+            "data": [
+                        [(new Date("2013/07/29")).getTime(), 10], 
+                        [(new Date("2013/08/05")).getTime(), 40], 
+                        [(new Date("2013/08/12")).getTime(), 45], 
+                        [(new Date("2013/08/19")).getTime(), 23],
+                        [(new Date("2013/08/26")).getTime(), 55]
+                    ]
+            
+        },
+        "visitors": {
+            "label": "visitors",
+            "data": [
+                        [(new Date("2013/07/29")).getTime(), 40], 
+                        [(new Date("2013/08/05")).getTime(), 50], 
+                        [(new Date("2013/08/12")).getTime(), 23], 
+                        [(new Date("2013/08/19")).getTime(), 48],
+                        [(new Date("2013/08/26")).getTime(), 38]
+                    ]
+        },
+        "vis": {
+            "label": "visitors",
+            "data": [
+                        [(new Date("2013/07/29")).getTime(), 42], 
+                        [(new Date("2013/08/05")).getTime(), 20], 
+                        [(new Date("2013/08/12")).getTime(), 28], 
+                        [(new Date("2013/08/19")).getTime(), 45],
+                        [(new Date("2013/08/26")).getTime(), 32]
+                    ]
+        }
+    };
+    $scope.data1 = [data["visits"], data["visitors"]];
+    $scope.cal = function(id){
+        $http.get('http://movies.apidone.com/movies', { cache: true}).success(
+            function(lala){
+              console.log(lala.length);
+            }
+          );
+          console.log("chao1");
+        console.log("lala");
+        console.log(id);
+    }
+
+    }]);
+    </script>
+</head>
+<body ng-app="ng-payparrot-example">
+	<div ng-controller="ngCtrl">
+		<div style="margin-top: 200px"></div>
+		<popchart ng-model="data1" show-event="cal" show-event-attrs="1"></popchart>
+	</div>
+</body>
+</html>

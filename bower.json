@@ -1,0 +1,34 @@
+{
+  "name": "ng-payparrot",
+  "version": "0.0.1",
+  "authors": [
+    "Daniel Pérez <dperezrada@gmail.com>"
+  ],
+  "description": "Payparrot angular modules",
+  "license": "MIT",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "main": "./dist/ng-payparrot.min.js",
+  "ignore": [
+    "**/.*",
+    "Gruntfile.js",
+    "karma.conf.js",
+    "package.json",
+    "test",
+    "src",
+    ".travis.yml"
+  ],
+  "devDependencies": {
+    "angular-mocks": "*"
+  },
+  "dependencies": {
+    "angular": "*",
+    "angular-ui-bootstrap-bower": "~0.6.0",
+    "bootstrap-css": "2.3.2",
+    "jquery": "~2.0.3",
+    "flot": "~0.8.1"
+  }
+}
