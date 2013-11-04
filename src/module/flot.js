@@ -62,8 +62,11 @@ angular.module('ngPayparrot')
           scope.show = !scope.show;
           if(scope.show){
             // Calling On show event function
-            console.log(scope.showEventAttrs[0]);
-            scope.showEvent.apply(this, scope.showEventAttrs);
+            var apply_attrs = scope.showEventAttrs;
+            if(!(apply_attrs instanceof Array )){
+              apply_attrs = [scope.showEventAttrs,];
+            }
+            scope.showEvent.apply(this, apply_attrs);
 
             $('.popover', element).css({
               'max-width': 'none',
