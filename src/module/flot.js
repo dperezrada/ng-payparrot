@@ -5,7 +5,7 @@ angular.module('ngPayparrot')
     return {
       template: '<div class="popover_container"><button popover-placement="right" popover="loading..." class="btn" popover-title="Visitantes últimos 3 meses">chart</button></div>',
       restrict: 'E',
-      scope: {showEventAttr: "=",showEvent: "=", ngModel: "="},
+      scope: {showEventAttrs: "=",showEvent: "=", ngModel: "="},
       link: function(scope, element, attrs) {
         var chart = null,
           options = {
@@ -37,10 +37,8 @@ angular.module('ngPayparrot')
             }
           };
 
-        var data = scope.ngModel;
-
         var updateChart = function(){
-          if(!data || data.length === 0)
+          if(!scope.ngModel || scope.ngModel.length === 0)
             return ;
           var elem = $('.popover-content', element);
           if(elem.length === 0){
@@ -48,27 +46,29 @@ angular.module('ngPayparrot')
           }
           if(!chart){
             elem.html('');
-            chart = $.plot(elem, data , options);
+            chart = $.plot(elem, scope.ngModel , options);
             elem.show();
           }else{
-            chart.setData(data);
+            chart.setData(scope.ngModel);
             chart.setupGrid();
             chart.draw();
           }
         };
-        scope.$watch('data', function(){
+        scope.$watch('ngModel', function(){
           updateChart();
-        });
+        }, true);
 
         $(element).click(function(){
           scope.show = !scope.show;
           if(scope.show){
-            // Calling On click function
-            scope.showEvent(scope.showEventAttr);
+            // Calling On show event function
+            console.log(scope.showEventAttrs[0]);
+            scope.showEvent.apply(this, scope.showEventAttrs);
 
             $('.popover', element).css({
               'max-width': 'none',
-              'height': '250px'
+              'height': '250px',
+              'top': '88px'   //TODO: FIX this
             });
             $('.popover-content', element).css({
               'width': '450px',
