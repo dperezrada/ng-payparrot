@@ -3,7 +3,7 @@
 angular.module('ngPayparrot')
   .directive('popchart', function ($http) {
     return {
-      template: '<div class="popover_container"><button popover-placement="right" popover="loading..." class="btn" popover-title="{{customTitle}}"><i alt="" class="icon-bar-chart"></i></button></div>',
+      template: '<div class="popover_container"><i alt="hola" class="icon-bar-chart" popover-placement="right" popover="loading..." class="btn" popover-title="{{customTitle}}"></i></div>',
       restrict: 'E',
       scope: {showEventAttrs: "=",showEvent: "=", ngModel: "=", customTitle: "="},
       link: function(scope, element, attrs) {

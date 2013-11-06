@@ -1,6 +1,6 @@
 /**
  * Payparrot angular modules
- * @version v0.0.1 - 2013-11-04
+ * @version v0.0.1 - 2013-11-06
  * @link 
  * @author Daniel Pérez <dperezrada@gmail.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -20,7 +20,7 @@ angular.module('ngPayparrot').constant('Utils', Utils);
 angular.module('ngPayparrot')
   .directive('popchart', function ($http) {
     return {
-      template: '<div class="popover_container"><button popover-placement="right" popover="loading..." class="btn" popover-title="{{customTitle}}"><i alt="" class="icon-bar-chart"></i></button></div>',
+      template: '<div class="popover_container"><i alt="hola" class="icon-bar-chart" popover-placement="right" popover="loading..." class="btn" popover-title="{{customTitle}}"></i></div>',
       restrict: 'E',
       scope: {showEventAttrs: "=",showEvent: "=", ngModel: "=", customTitle: "="},
       link: function(scope, element, attrs) {
